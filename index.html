@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bela-Art | Original Art, Prints & Lifestyle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #f5f5f5;
+            --accent: #c5a491;
+            --light-accent: #f8f1e9;
+            --text: #333;
+            --light-text: #777;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text);
+            background-color: var(--secondary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            padding: 15px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-icons a {
+            margin-left: 20px;
+            color: var(--primary);
+            font-size: 18px;
+            transition: var(--transition);
+        }
+
+        .nav-icons a:hover {
+            color: var(--accent);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background-color: #b39382;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* Categories */
+        .categories {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--light-text);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .category-card {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .category-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+        }
+
+        .category-overlay h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        /* Featured Art */
+        .featured-art {
+            padding: 100px 0;
+            background-color: var(--secondary);
+        }
+
+        .art-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .art-card {
+            background: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .art-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .art-img {
+            height: 350px;
+            overflow: hidden;
+        }
+
+        .art-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .art-card:hover .art-img img {
+            transform: scale(1.05);
+        }
+
+        .art-info {
+            padding: 25px;
+        }
+
+        .art-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .artist {
+            color: var(--light-text);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .price {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 100px 0;
+            background: linear-gradient(rgba(26, 26, 26, 0.9), rgba(26, 26, 26, 0.9)), url('https://images.unsplash.com/photo-1518998053901-5348d3961a04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            color: white;
+            text-align: center;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .step {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 5px;
+            padding: 40px 30px;
+            transition: var(--transition);
+        }
+
+        .step:hover {
+            background: rgba(197, 164, 145, 0.2);
+            transform: translateY(-10px);
+        }
+
+        .step-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .testimonial {
+            background: var(--secondary);
+            padding: 40px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .testimonial:before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
+            opacity: 0.2;
+            line-height: 1;
+        }
+
+        .testimonial p {
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .client {
+            display: flex;
+            align-items: center;
+        }
+
+        .client img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .client-info h4 {
+            margin-bottom: 5px;
+        }
+
+        .client-info span {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 80px 0;
+            background-color: var(--light-accent);
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            margin-bottom: 20px;
+        }
+
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: var(--light-text);
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            padding: 0 30px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background-color: #b39382;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 80px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-col p, .footer-col a {
+            color: #aaa;
+            margin-bottom: 15px;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            padding-left: 0;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .art-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+                max-width: 600px;
+                margin: 60px auto 0;
+            }
+            
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .btn {
+                display: block;
+                margin: 15px auto;
+                width: 80%;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+            
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .art-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input, .newsletter-form button {
+                width: 100%;
+            }
+            
+            .newsletter-form button {
+                margin-top: 15px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Bela-<span>Art</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Prints</a></li>
+                    <li><a href="#">Apparel</a></li>
+                    <li><a href="#">Home Goods</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+            <div class="nav-icons">
+                <a href="#"><i class="fas fa-search"></i></a>
+                <a href="#"><i class="fas fa-user"></i></a>
+                <a href="#"><i class="fas fa-shopping-bag"></i></a>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Where Originals Move from Walls to World</h1>
+            <p>Original paintings, limited prints, and art-infused lifestyle pieces designed for the intentional collector.</p>
+            <a href="#" class="btn">Shop Collection</a>
+            <a href="#" class="btn btn-outline">Commission Artwork</a>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Collections</h2>
+                <p>Discover unique art pieces across different categories that bring creativity into every aspect of your life.</p>
+            </div>
+            <div class="category-grid">
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1543857778-c4a1a569e7bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Original Art">
+                    <div class="category-overlay">
+                        <h3>Original Art</h3>
+                        <p>Unique paintings & sculptures</p>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1584824486539-53bb4646bdbc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Limited Prints">
+                    <div class="category-overlay">
+                        <h3>Limited Prints</h3>
+                        <p>Archival quality reproductions</p>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Apparel">
+                    <div class="category-overlay">
+                        <h3>Apparel</h3>
+                        <p>Wearable art on premium fabrics</p>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Home Goods">
+                    <div class="category-overlay">
+                        <h3>Home Goods</h3>
+                        <p>Art for your everyday rituals</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Art Section -->
+    <section class="featured-art">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Artworks</h2>
+                <p>Explore our curated selection of original pieces from emerging and established artists.</p>
+            </div>
+            <div class="art-grid">
+                <div class="art-card">
+                    <div class="art-img">
+                        <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Abstract Composition">
+                    </div>
+                    <div class="art-info">
+                        <h3>Abstract Composition</h3>
+                        <div class="artist">By Elena Rodriguez</div>
+                        <span class="price">$1,200</span>
+                        <p>Acrylic on canvas • 36" × 48" • 2023</p>
+                    </div>
+                </div>
+                <div class="art-card">
+                    <div class="art-img">
+                        <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Urban Echoes">
+                    </div>
+                    <div class="art-info">
+                        <h3>Urban Echoes</h3>
+                        <div class="artist">By Marcus Chen</div>
+                        <span class="price">$850</span>
+                        <p>Mixed media on wood • 24" × 36" • 2023</p>
+                    </div>
+                </div>
+                <div class="art-card">
+                    <div class="art-img">
+                        <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Botanical Dreams">
+                    </div>
+                    <div class="art-info">
+                        <h3>Botanical Dreams</h3>
+                        <div class="artist">By Sofia Petrova</div>
+                        <span class="price">$1,500</span>
+                        <p>Oil on canvas • 40" × 30" • 2023</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process">
+        <div class="container">
+            <div class="section-header">
+                <h2>The Creative Journey</h2>
+                <p>Every piece begins with inspiration and transforms through a dedicated artistic process.</p>
+            </div>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Concept & Inspiration</h3>
+                    <p>Each piece begins with a concept drawn from nature, urban landscapes, and human emotion.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Creation Process</h3>
+                    <p>Using premium materials, we transform concepts into tangible art through meticulous craftsmanship.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Quality Assurance</h3>
+                    <p>Every piece undergoes rigorous quality checks and receives a certificate of authenticity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Collector Stories</h2>
+                <p>Hear from art lovers who have brought Bela-Art pieces into their lives.</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p>"The original painting I purchased from Bela-Art has transformed my living space. The quality and emotional depth of the piece exceeded my expectations."</p>
+                    <div class="client">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Alex Morgan">
+                        <div class="client-info">
+                            <h4>Alex Morgan</h4>
+                            <span>Art Collector, New York</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p>"I wear my Bela-Art tee at least once a week. The print quality has held up beautifully through many washes, and I constantly receive compliments."</p>
+                    <div class="client">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Jamal Williams">
+                        <div class="client-info">
+                            <h4>Jamal Williams</h4>
+                            <span>Designer, Los Angeles</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Join Our Creative Community</h2>
+            <p>Subscribe for exclusive access to new collections, artist stories, and special offers.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Bela-Art</h3>
+                    <p>Where original art moves from gallery walls to your world through paintings, prints, and lifestyle pieces.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Explore</h3>
+                    <a href="#">Gallery</a>
+                    <a href="#">Collections</a>
+                    <a href="#">Featured Artists</a>
+                    <a href="#">New Arrivals</a>
+                    <a href="#">Limited Editions</a>
+                </div>
+                <div class="footer-col">
+                    <h3>Support</h3>
+                    <a href="#">Shipping & Returns</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Care Instructions</a>
+                    <a href="#">Certificate of Authenticity</a>
+                    <a href="#">Contact Us</a>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p>Studio: 123 Artisan Street, Brooklyn, NY 11201</p>
+                    <p>Email: studio@bela-art.com</p>
+                    <p>Phone: (212) 555-7890</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Bela-Art. All rights reserved. Artwork images protected by copyright.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav').style.display = 
+                document.querySelector('nav').style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
